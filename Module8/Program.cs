@@ -5,11 +5,15 @@
         static void Main(string[] args)
         {
             GetCatalogsCount(); //   Вызов метода получения директорий
+
+            CreatCatalog("test");
+
+            GetCatalogsCount(); //   Вызов метода получения директорий
         }
 
         static void GetCatalogs()
         {
-            string dirName = @"C:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
+            string dirName = @"D:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
             if (Directory.Exists(dirName)) // Проверим, что директория существует
             {
                 Console.WriteLine("Папки:");
@@ -29,7 +33,7 @@
 
         static void GetCatalogsCount()
         {
-            string dirName = @"C:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
+            string dirName = @"D:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
             if (Directory.Exists(dirName)) // Проверим, что директория существует
             {
                 Console.WriteLine("Папки:");
@@ -43,6 +47,17 @@
 
                 Console.WriteLine(files.Length); // Количество файлов
             }
+        }
+
+        static void CreatCatalog(string name)
+        {
+            string dirName = @"D:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
+            DirectoryInfo dirInfo = new DirectoryInfo(dirName);
+            if (!dirInfo.Exists)
+                Console.WriteLine("Каталог отсутствует");
+            DirectoryInfo newDirectory = new DirectoryInfo(@"/" + name);
+            if (!newDirectory.Exists)
+                newDirectory.Create();
         }
     }
 }
