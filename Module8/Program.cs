@@ -9,6 +9,10 @@
             CreatCatalog("test");
 
             GetCatalogsCount(); //   Вызов метода получения директорий
+
+            DeleteCatalog("test");
+
+            GetCatalogsCount(); //   Вызов метода получения директорий
         }
 
         static void GetCatalogs()
@@ -58,6 +62,15 @@
             DirectoryInfo newDirectory = new DirectoryInfo(@"/" + name);
             if (!newDirectory.Exists)
                 newDirectory.Create();
+        }
+
+        static void DeleteCatalog(string name)
+        {
+            string dirName = @"D:\\"; // Прописываем путь к корневой директории MacOS (для Windows скорее всего тут будет "C:\\")
+            
+            DirectoryInfo newDirectory = new DirectoryInfo(@"/" + name);
+            if (newDirectory.Exists)
+                newDirectory.Delete(true);
         }
     }
 }
