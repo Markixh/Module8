@@ -1,4 +1,6 @@
-﻿namespace Module8.Library
+﻿using System.IO;
+
+namespace Module8.Library
 {
     public class ReadFile
     {
@@ -21,5 +23,15 @@
                 }
             }
         }
+
+        public void Write()
+        {
+            var fileInfo = new FileInfo(FilePath);
+            using (StreamWriter sw = fileInfo.AppendText())
+            {
+                sw.WriteLine($@"//{DateTime.Now}");
+            }
+        }
     }
 }
+//24.10.2022 22:33:22
