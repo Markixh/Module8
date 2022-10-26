@@ -1,4 +1,6 @@
-﻿namespace Task8_2_4
+﻿using Microsoft.VisualBasic.FileIO;
+
+namespace Task8_2_4
 {
     internal class Program
     {
@@ -9,6 +11,7 @@
                 Dir = args[0];
             if (CreatCatalog(String.Concat(GetPathDesktop(), $@"/{Dir}")))
                 Console.WriteLine($"{Dir} успешно создан");
+            FileSystem.DeleteDirectory("Каталог", UIOption.AllDialogs, RecycleOption.SendToRecycleBin, UICancelOption.ThrowException);
             MoveRecycler(String.Concat(GetPathDesktop(), $@"/{Dir}"));
             Console.WriteLine($"{Dir} успешно перемещен в карзину");
         }
